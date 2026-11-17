@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pranav Buradi — Data Analyst Resume</title>
+  <style>
+    :root {
+      --bg: #07080b;
+      --surface: #11131c;
+      --text: #f4f6fb;
+      --muted: #9ca3af;
+      --cyan: #00f0ff;
+      --cobalt: #2979ff;
+      --border: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding: 36px 20px;
+    }
+    .toolbar {
+      max-width: 860px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00f0ff 0%, #2979ff 100%);
+      color: #04070d;
+      border: none;
+    }
+    .sheet {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 40px;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 22px;
+      margin-bottom: 24px;
+    }
+    h1 { font-size: 30px; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .role { color: var(--cyan); font-weight: 600; font-size: 15px; margin-bottom: 10px; }
+    .contact { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 10px 18px; }
+    .contact a { color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(0,240,255,0.3); }
+    section { margin-bottom: 24px; }
+    h2 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding-bottom: 6px;
+    }
+    .item { margin-bottom: 14px; }
+    .item-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-weight: 600; font-size: 15px; }
+    .meta { color: var(--muted); font-size: 13px; font-weight: 400; }
+    ul { margin-top: 6px; padding-left: 18px; color: #d1d5db; font-size: 14px; }
+    li { margin-bottom: 4px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .skill-row { font-size: 14px; margin-bottom: 6px; color: #d1d5db; }
+    .skill-row strong { color: var(--text); }
+    @media print {
+      body { background: #fff; color: #111; padding: 0; }
+      .toolbar { display: none; }
+      .sheet { background: #fff; border: none; padding: 20px; border-radius: 0; }
+      .role, h2 { color: #0b5ed7; }
+      .contact, .meta { color: #4b5563; }
+      .contact a { color: #111; border-bottom: none; }
+      ul, .skill-row { color: #1f2937; }
+      .skill-row strong { color: #111; }
+      header, h2 { border-color: #e5e7eb; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <a class="btn" href="/">&larr; Back to Portfolio</a>
+    <div style="display:flex;gap:10px;">
+      <a class="btn" href="/assets/aistudio/Pranav_B_a2af4007.pdf" download="Pranav-Buradi-Resume.pdf">Download PDF</a>
+      <button class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </div>
+
+  <main class="sheet">
+    <header>
+      <h1>Pranav Buradi (Pranav R Buradi)</h1>
+      <div class="role">Data Analyst &bull; Python &amp; SQL Developer &bull; CSE Graduate (VTU 2026)</div>
+      <div class="contact">
+        <span>Gadag, Karnataka, India</span>
+        <a href="mailto:pranavburadi@gmail.com">pranavburadi@gmail.com</a>
+        <a href="tel:+918431954871">+91 84319 54871</a>
+        <a href="https://linkedin.com/in/pranavburadi" target="_blank" rel="noreferrer">linkedin.com/in/pranavburadi</a>
+        <a href="https://github.com/pranavburadi" target="_blank" rel="noreferrer">github.com/pranavburadi</a>
+        <a href="https://www.instagram.com/barelypranav/" target="_blank" rel="noreferrer">@barelypranav</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Summary</h2>
+      <p style="font-size:14px;color:#d1d5db;">
+        Computer Science graduate (VTU 2026, CGPA 7.3/10) passionate about Data Analytics, ETL pipeline engineering, and modern AI toolchains. Well-versed in leveraging generative AI workflows, LLM prompts, and automated coding agents (ChatGPT, Claude, Gemini, Cursor AI, GitHub Copilot, v0) alongside core SQL and Python to build, test, and ship analytical solutions 3x faster.
+      </p>
+    </section>
+
+    <section>
+      <h2>Technical Toolkit &amp; AI Accelerators</h2>
+      <div class="skill-row"><strong>AI Tools &amp; Accelerators:</strong> ChatGPT (Advanced Data Analysis), Claude 3.5 Sonnet, Google Gemini, Cursor AI, GitHub Copilot, v0.dev, Prompt Engineering, LLM Workflow Automation</div>
+      <div class="skill-row"><strong>Programming &amp; Querying:</strong> Python, SQL (MySQL, PostgreSQL), Java, DuckDB</div>
+      <div class="skill-row"><strong>Data Analysis &amp; ML:</strong> Pandas, NumPy, Scikit-Learn, Exploratory Data Analysis (EDA), Feature Engineering</div>
+      <div class="skill-row"><strong>BI &amp; Visualization:</strong> Power BI, Tableau, Matplotlib, Seaborn, Microsoft Excel (Pivot Tables, VLOOKUP, Power Query)</div>
+      <div class="skill-row"><strong>Engineering Frameworks:</strong> MySQL, Git, GitHub, RESTful APIs, Spring Boot, Postman, VS Code</div>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <div class="item">
+        <div class="item-head">
+          <span>Java Full Stack Developer Intern &mdash; Genesis</span>
+          <span class="meta">Gadag, Karnataka &bull; 4 Months</span>
+        </div>
+        <ul>
+          <li>Managed backend MySQL database workflows, executed optimized SQL queries, validated API payloads, and collaborated in an Agile engineering team.</li>
+          <li>Built the Smart Plot Investment Portal with normalized relational schemas and transaction locks eliminating double-booking collisions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Flagship Projects</h2>
+      <div class="item">
+        <div class="item-head">
+          <span>OmniFlow &mdash; Automated Multi-Source ETL Pipeline</span>
+          <span class="meta">Python, SQL, REST APIs, Pandas, MySQL, Git</span>
+        </div>
+        <ul>
+          <li>Analyzed 52,000+ multi-stage transactional records using automated Python &amp; SQL ingestion pipelines eliminating duplicate entries.</li>
+          <li>Integrated RESTful error alerting routines reducing data pipeline failure resolution time by 35%.</li>
+          <li>Built analytical views benchmarking carrier OTIF delivery performance and SLA penalties.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="item-head">
+          <span>Smart Plot Investment Portal &mdash; Real Estate Fintech Platform</span>
+          <span class="meta">MySQL, Java, Spring Boot, SQL, REST APIs</span>
+        </div>
+        <ul>
+          <li>Designed normalized relational database schemas (Users, Properties, Bookings, Payments).</li>
+          <li>Built backend query procedures and REST APIs calculating real-time investor yields and payment statuses.</li>
+          <li>Enforced strict relational transaction rules preventing double-booking errors and delivered a responsive investor tracking dashboard.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="item">
+        <div class="item-head"><span>B.E. Computer Science &amp; Engineering &mdash; Tontadarya College of Engineering (VTU)</span><span class="meta">2022&ndash;2026 &bull; CGPA: 7.3/10</span></div>
+      </div>
+      <div class="item">
+        <div class="item-head"><span>Higher Secondary (PUC) &mdash; Sanmarg Pre-University College</span><span class="meta">2020&ndash;2022 &bull; 66%</span></div>
+      </div>
+      <div class="item">
+        <div class="item-head"><span>Secondary Education &mdash; Jaycee High School</span><span class="meta">2008&ndash;2020 &bull; 75%</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Certifications &amp; Athletic Honors</h2>
+      <div class="grid-2">
+        <ul>
+          <li>IBM Certification in Artificial Intelligence Fundamentals</li>
+          <li>Advanced AI &amp; Machine Learning &mdash; Infosys Springboard</li>
+          <li>Full Stack Java Internship Certificate &mdash; Genesis</li>
+        </ul>
+        <ul>
+          <li>National Level U-14 Football Representative (Pune Tournament Participant)</li>
+          <li>2nd Prize National Silver Medalist &mdash; Student Olympics Football Competition, Imphal, Manipur</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
