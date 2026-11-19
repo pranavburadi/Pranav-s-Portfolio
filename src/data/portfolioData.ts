@@ -36,6 +36,7 @@ export interface CarouselVideo {
   title: string;
   subtitle: string;
   src: string;
+  poster: string;
   tag: string;
 }
 
@@ -46,6 +47,7 @@ export const CAROUSEL_VIDEOS: CarouselVideo[] = [
     title: 'Top Bins Free-Kick Strike',
     subtitle: 'Set-piece precision & composure on target',
     src: '/assets/aistudio/top_bins_89df12d5.mp4',
+    poster: '/assets/aistudio/poster_top_bins.jpg',
     tag: 'Football Reel',
   },
   {
@@ -54,6 +56,7 @@ export const CAROUSEL_VIDEOS: CarouselVideo[] = [
     title: 'Perspective & Visual Storytelling',
     subtitle: 'Creative pacing, framing & color grading (@barelypranav)',
     src: '/assets/aistudio/0705_4__19b7ff78.mp4',
+    poster: '/assets/aistudio/poster_visual.jpg',
     tag: 'Creative Reel',
   },
   {
@@ -62,6 +65,7 @@ export const CAROUSEL_VIDEOS: CarouselVideo[] = [
     title: 'Turf Matchplay · Attacking Third',
     subtitle: '1v1 progression, spatial awareness & link-up play',
     src: '/assets/aistudio/1109-copy_1__61078dcc.mp4',
+    poster: '/assets/aistudio/poster_match.jpg',
     tag: 'Match Highlights',
   },
   {
@@ -70,6 +74,7 @@ export const CAROUSEL_VIDEOS: CarouselVideo[] = [
     title: 'Interceptor 650',
     subtitle: 'Visual reel (@barelypranav)',
     src: '/assets/aistudio/650_781ec2c2.mp4',
+    poster: '/assets/aistudio/poster_650.jpg',
     tag: 'Lifestyle Reel',
   },
 ];

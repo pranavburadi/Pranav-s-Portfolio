@@ -35,6 +35,7 @@ export default function HeroSection({ onCopyEmail, emailCopied }: HeroSectionPro
   const [isHovered, setIsHovered] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [videoRatios, setVideoRatios] = useState<Record<string, string>>({});
+  const [playingMap, setPlayingMap] = useState<Record<number, boolean>>({});
 
   const [activeTabId, setActiveTabId] = useState(TERMINAL_TABS[0].id);
   const [isRunning, setIsRunning] = useState(false);
@@ -55,7 +56,7 @@ export default function HeroSection({ onCopyEmail, emailCopied }: HeroSectionPro
     }
   }, []);
 
-  // Ensure ALL carousel videos keep playing visually, and ONLY activeAudioIdx has audio unmuted
+  // Ensure carousel videos keep playing visually, and ONLY activeAudioIdx has audio unmuted
   useEffect(() => {
     if (viewMode !== 'reels') {
       videoRefs.current.forEach((vid) => {
@@ -65,13 +66,19 @@ export default function HeroSection({ onCopyEmail, emailCopied }: HeroSectionPro
     }
     videoRefs.current.forEach((vid, idx) => {
       if (!vid) return;
+      vid.setAttribute('muted', '');
+      vid.setAttribute('playsinline', '');
       vid.defaultMuted = true;
       vid.muted = activeAudioIdx !== idx;
       if (vid.paused) {
-        vid.play().catch(() => {});
+        vid.play().catch(() => {
+          // If unmuted autoplay was rejected, retry muted so video still plays visually
+          vid.muted = true;
+          vid.play().catch(() => {});
+        });
       }
     });
-  }, [viewMode, activeAudioIdx]);
+  }, [viewMode, activeAudioIdx, activeIndex]);
 
   // Auto-roll smoothly through carousel positions
   useEffect(() => {
@@ -83,9 +90,13 @@ export default function HeroSection({ onCopyEmail, emailCopied }: HeroSectionPro
   }, [viewMode, autoRoll, isHovered]);
 
   const handleVideoLoaded = (id: string, idx: number, el: HTMLVideoElement) => {
+    el.setAttribute('muted', '');
     el.defaultMuted = true;
     el.muted = activeAudioIdx !== idx;
-    el.play().catch(() => {});
+    el.play().catch(() => {
+      el.muted = true;
+      el.play().catch(() => {});
+    });
     if (el.videoWidth && el.videoHeight) {
       setVideoRatios((prev) => ({
         ...prev,
@@ -95,11 +106,20 @@ export default function HeroSection({ onCopyEmail, emailCopied }: HeroSectionPro
   };
 
   const handleVideoClick = (idx: number) => {
+    const el = videoRefs.current[idx];
+    if (el && el.paused) {
+      el.muted = false;
+      el.play().catch(() => {
+        el.muted = true;
+        el.play().catch(() => {});
+      });
+      setActiveIndex(idx);
+      setIsMuted(false);
+      return;
+    }
     if (activeIndex === idx) {
-      // Toggle mute when clicking the already-front video
       setIsMuted((prev) => !prev);
     } else {
-      // Bring clicked video to front and play ONLY its audio
       setActiveIndex(idx);
       setIsMuted(false);
     }
@@ -423,8 +443,16 @@ export default function HeroSection({ onCopyEmail, emailCopied }: HeroSectionPro
                         <video
                           ref={(el) => {
                             videoRefs.current[idx] = el;
+                            if (el) {
+                              el.defaultMuted = true;
+                              if (activeAudioIdx !== idx) {
+                                el.setAttribute('muted', '');
+                                el.muted = true;
+                              }
+                            }
                           }}
                           src={video.src}
+                          poster={video.poster}
                           autoPlay
                           muted={activeAudioIdx !== idx}
                           loop
@@ -434,10 +462,28 @@ export default function HeroSection({ onCopyEmail, emailCopied }: HeroSectionPro
                           onCanPlay={(e) => {
                             e.currentTarget.defaultMuted = true;
                             e.currentTarget.muted = activeAudioIdx !== idx;
-                            e.currentTarget.play().catch(() => {});
+                            e.currentTarget.play().catch(() => {
+                              e.currentTarget.muted = true;
+                              e.currentTarget.play().catch(() => {});
+                            });
                           }}
+                          onPlaying={() =>
+                            setPlayingMap((prev) => (prev[idx] ? prev : { ...prev, [idx]: true }))
+                          }
+                          onPause={() =>
+                            setPlayingMap((prev) => (prev[idx] === false ? prev : { ...prev, [idx]: false }))
+                          }
                           className="h-full w-full object-cover block"
                         />
+
+                        {/* Tap-to-play fallback button if browser blocks autoplay */}
+                        {!playingMap[idx] && (
+                          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/25">
+                            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#00F0FF]/70 bg-black/75 text-[#00F0FF] shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+                              <Play className="h-4 w-4 fill-current ml-0.5" />
+                            </span>
+                          </div>
+                        )}
 
                         {/* Minimal corner speaker indicator (only shows active audio or on hover) */}
                         <div
